@@ -2,9 +2,9 @@
 
 namespace Xofttion\Database\Contracts;
 
-interface IFilter
+interface ICondition
 {
-    // Métodos de la interfaz IFilter
+    // Métodos de la interfaz ICondition
 
     public function getColumn(): string;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace Xofttion\Database\Sql\Filters;
+namespace Xofttion\Database\Sql\Conditions;
 
-final class Smaller extends Filter
+final class Smaller extends Condition
 {
     // Constructor de la clase Smaller
 

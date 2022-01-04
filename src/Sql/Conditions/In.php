@@ -1,8 +1,8 @@
 <?php
 
-namespace Xofttion\Database\Sql\Filters;
+namespace Xofttion\Database\Sql\Conditions;
 
-final class In extends Filter
+final class In extends Condition
 {
     // Atributos de la clase In
 

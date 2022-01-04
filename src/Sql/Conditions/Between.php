@@ -1,8 +1,8 @@
 <?php
 
-namespace Xofttion\Database\Sql\Filters;
+namespace Xofttion\Database\Sql\Conditions;
 
-final class Between extends Filter
+final class Between extends Condition
 {
     // Constructor de la clase Between
 

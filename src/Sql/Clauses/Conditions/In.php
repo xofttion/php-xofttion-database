@@ -1,10 +1,10 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Sql\Filters\In as InFilter;
+use Xofttion\Database\Sql\Conditions\In as InFilter;
 
-final class In extends Filter
+final class In extends Condition
 {
     // Constructor de la clase In
 
@@ -16,7 +16,7 @@ final class In extends Filter
     ) {
         $count = count($values);
 
-        $this->filter = InFilter::create($column, $count, $not);
+        $this->condition = InFilter::create($column, $count, $not);
 
         parent::__construct($values, $union);
     }

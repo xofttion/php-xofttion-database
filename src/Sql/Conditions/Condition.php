@@ -1,12 +1,12 @@
 <?php
 
-namespace Xofttion\Database\Sql\Filters;
+namespace Xofttion\Database\Sql\Conditions;
 
-use Xofttion\Database\Contracts\IFilter;
+use Xofttion\Database\Contracts\ICondition;
 
-class Filter implements IFilter
+class Condition implements ICondition
 {
-    // Atributos de la clase Filter
+    // Atributos de la clase Condition
 
     protected string $column;
 
@@ -14,7 +14,7 @@ class Filter implements IFilter
 
     protected bool $not;
 
-    // Constructor de la clase Filter
+    // Constructor de la clase Condition
 
     protected function __construct(
         string $column,
@@ -26,7 +26,7 @@ class Filter implements IFilter
         $this->not = $not;
     }
 
-    // Métodos de la clase Filter
+    // Métodos de la clase Condition
 
     public function getOperator(): string
     {
@@ -43,7 +43,7 @@ class Filter implements IFilter
         return '?';
     }
 
-    // Métodos sobrescritos de la interfaz IFilter
+    // Métodos sobrescritos de la interfaz ICondition
 
     public function getColumn(): string
     {
@@ -57,8 +57,8 @@ class Filter implements IFilter
         $operator = $this->getOperator();
         $value = $this->getValue();
 
-        $filter = "{$column} {$not} {$operator} {$value}";
+        $Condition = "{$column} {$not} {$operator} {$value}";
 
-        return $filter;
+        return $Condition;
     }
 }

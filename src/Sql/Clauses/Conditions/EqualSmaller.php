@@ -1,24 +1,24 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Sql\Filters\Smaller as SmallerFilter;
+use Xofttion\Database\Sql\Conditions\EqualSmaller as EqualSmallerFilter;
 
-final class Smaller extends Filter
+final class EqualSmaller extends Condition
 {
-    // Constructor de la clase Smaller
+    // Constructor de la clase EqualSmaller
 
     private function __construct(
         string $column,
         string $value,
         ?string $union = null
     ) {
-        $this->filter = SmallerFilter::create($column);
+        $this->condition = EqualSmallerFilter::create($column);
 
         parent::__construct([$value], $union);
     }
 
-    // Métodos estáticos de la clase Smaller
+    // Métodos estáticos de la clase EqualSmaller
 
     public static function create(
         string $column,

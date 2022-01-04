@@ -1,24 +1,24 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Sql\Filters\Greater as GreaterFilter;
+use Xofttion\Database\Sql\Conditions\Different as DifferentFilter;
 
-final class Greater extends Filter
+final class Different extends Condition
 {
-    // Constructor de la clase Greater
+    // Constructor de la clase Different
 
     private function __construct(
         string $column,
         string $value,
         ?string $union = null
     ) {
-        $this->filter = GreaterFilter::create($column);
+        $this->condition = DifferentFilter::create($column);
 
         parent::__construct([$value], $union);
     }
 
-    // Métodos estáticos de la clase Greater
+    // Métodos estáticos de la clase Different
 
     public static function create(
         string $column,

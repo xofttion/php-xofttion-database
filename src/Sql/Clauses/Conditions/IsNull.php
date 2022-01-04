@@ -1,16 +1,16 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Sql\Filters\IsNull as IsNullFilter;
+use Xofttion\Database\Sql\Conditions\IsNull as IsNullFilter;
 
-final class IsNull extends Filter
+final class IsNull extends Condition
 {
     // Constructor de la clase IsNull
 
     private function __construct(string $column, ?string $union = null)
     {
-        $this->filter = IsNullFilter::create($column);
+        $this->condition = IsNullFilter::create($column);
 
         parent::__construct([], $union);
     }

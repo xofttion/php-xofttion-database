@@ -1,8 +1,8 @@
 <?php
 
-namespace Xofttion\Database\Sql\Filters;
+namespace Xofttion\Database\Sql\Conditions;
 
-final class Equal extends Filter
+final class Equal extends Condition
 {
     // Constructor de la clase Equal
 

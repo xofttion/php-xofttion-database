@@ -1,8 +1,8 @@
 <?php
 
-namespace Xofttion\Database\Sql\Filters;
+namespace Xofttion\Database\Sql\Conditions;
 
-final class Like extends Filter
+final class Like extends Condition
 {
     // Constructor de la clase Like
 
