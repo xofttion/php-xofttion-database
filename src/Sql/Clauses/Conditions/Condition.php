@@ -54,7 +54,7 @@ class Condition implements IClauseCondition
         $sql = $this->condition->build();
 
         if (is_defined($this->union)) {
-            $sql = "{$sql} {$this->union}";
+            $sql = "{$this->union} {$sql}";
         }
 
         $value = ValueSentence::create($sql, $this->values);
