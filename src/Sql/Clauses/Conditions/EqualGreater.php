@@ -1,24 +1,24 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Sql\Filters\Equal as EqualFilter;
+use Xofttion\Database\Sql\Conditions\EqualGreater as EqualGreaterFilter;
 
-final class Equal extends Filter
+final class EqualGreater extends Condition
 {
-    // Constructor de la clase Equal
+    // Constructor de la clase EqualGreater
 
     private function __construct(
         string $column,
         string $value,
         ?string $union = null
     ) {
-        $this->filter = EqualFilter::create($column);
+        $this->condition = EqualGreaterFilter::create($column);
 
         parent::__construct([$value], $union);
     }
 
-    // Métodos estáticos de la clase Equal
+    // Métodos estáticos de la clase EqualGreater
 
     public static function create(
         string $column,

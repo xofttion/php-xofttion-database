@@ -1,10 +1,10 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Sql\Filters\Like as LikeFilter;
+use Xofttion\Database\Sql\Conditions\Like as LikeFilter;
 
-final class Like extends Filter
+final class Like extends Condition
 {
     // Constructor de la clase Like
 
@@ -14,7 +14,7 @@ final class Like extends Filter
         ?string $union = null,
         bool $not = false
     ) {
-        $this->filter = LikeFilter::create($column, $not);
+        $this->condition = LikeFilter::create($column, $not);
 
         parent::__construct([$value], $union);
     }

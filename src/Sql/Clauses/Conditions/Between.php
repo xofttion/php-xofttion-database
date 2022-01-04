@@ -1,10 +1,10 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Sql\Filters\Between as BetweenFilter;
+use Xofttion\Database\Sql\Conditions\Between as BetweenFilter;
 
-final class Between extends Filter
+final class Between extends Condition
 {
     // Constructor de la clase Between
 
@@ -15,7 +15,7 @@ final class Between extends Filter
         ?string $union = null,
         bool $not = false
     ) {
-        $this->filter = BetweenFilter::create($column, $not);
+        $this->condition = BetweenFilter::create($column, $not);
 
         parent::__construct([$from, $until], $union);
     }

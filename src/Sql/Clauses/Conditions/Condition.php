@@ -1,23 +1,23 @@
 <?php
 
-namespace Xofttion\Database\Sql\Clauses\Filters;
+namespace Xofttion\Database\Sql\Clauses\Conditions;
 
-use Xofttion\Database\Contracts\IClauseFilter;
-use Xofttion\Database\Contracts\IFilter;
+use Xofttion\Database\Contracts\IClauseCondition;
+use Xofttion\Database\Contracts\ICondition;
 use Xofttion\Database\Contracts\IValueSentence;
 use Xofttion\Database\Sql\ValueSentence;
 
-class Filter implements IClauseFilter
+class Condition implements IClauseCondition
 {
-    // Atributos de la clase Filter
+    // Atributos de la clase Condition
 
-    protected IFilter $filter;
+    protected ICondition $condition;
 
     protected array $values;
 
     protected ?string $union;
 
-    // Constructor de la clase Filter
+    // Constructor de la clase Condition
 
     protected function __construct(array $values, ?string $union = null)
     {
@@ -25,11 +25,11 @@ class Filter implements IClauseFilter
         $this->union = $union;
     }
 
-    // Métodos de la clase Filter
+    // Métodos de la clase Condition
 
-    public function getFilter(): IFilter
+    public function getCondition(): ICondition
     {
-        return $this->filter;
+        return $this->condition;
     }
 
     public function getValues(): array
@@ -42,16 +42,16 @@ class Filter implements IClauseFilter
         return $this->union;
     }
 
-    // Métodos sobrescritos de la interfaz IClauseFilter
+    // Métodos sobrescritos de la interfaz IClauseCondition
 
     public function getColumn(): string
     {
-        return $this->filter->getColumn();
+        return $this->condition->getColumn();
     }
 
     public function build(): IValueSentence
     {
-        $sql = $this->filter->build();
+        $sql = $this->condition->build();
 
         if (is_defined($this->union)) {
             $sql = "{$sql} {$this->union}";

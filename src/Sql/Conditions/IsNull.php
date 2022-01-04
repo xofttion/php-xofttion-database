@@ -1,17 +1,17 @@
 <?php
 
-namespace Xofttion\Database\Sql\Filters;
+namespace Xofttion\Database\Sql\Conditions;
 
-final class IsNotNull extends Filter
+final class IsNull extends Condition
 {
-    // Constructor de la clase IsNotNull
+    // Constructor de la clase IsNull
 
     private function __construct(string $column)
     {
-        parent::__construct($column, 'IS NOT');
+        parent::__construct($column, 'IS');
     }
 
-    // Métodos estáticos de la clase IsNotNull
+    // Métodos estáticos de la clase IsNull
 
     public static function create(string $column): self
     {
