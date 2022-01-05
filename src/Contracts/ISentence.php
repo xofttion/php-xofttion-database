@@ -6,5 +6,5 @@ interface ISentence
 {
     // Métodos de la interfaz ISentence
 
-    public function build(): IResultSentence;
+    public function build(): IValueSql;
 }

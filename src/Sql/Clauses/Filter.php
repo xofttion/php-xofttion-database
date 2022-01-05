@@ -4,8 +4,8 @@ namespace Xofttion\Database\Sql\Clauses;
 
 use DomainException;
 use Xofttion\Database\Contracts\IFilter;
-use Xofttion\Database\Contracts\IValueSentence;
-use Xofttion\Database\Sql\ValueSentence;
+use Xofttion\Database\Contracts\IValueSql;
+use Xofttion\Database\Sql\ValueSql;
 use Xofttion\Database\Sql\Clauses\Traits\Conditions\BetweenTrait;
 use Xofttion\Database\Sql\Clauses\Traits\Conditions\ConditionTrait;
 use Xofttion\Database\Sql\Clauses\Traits\Conditions\InTrait;
@@ -42,24 +42,18 @@ class Filter implements IFilter
 
     // Métodos sobrescritos de la interfaz IFilter
 
-    public function build(): IValueSentence
+    public function build(): IValueSql
     {
         if ($this->isEmpty()) {
             throw new DomainException('Clause Filter must contain at least one condition');
         }
 
-        $sql = "{$this->name}";
-
-        $values = [];
+        $sql = ValueSql::create("{$this->name}", []);
 
         foreach ($this->conditions as $condition) {
-            $build = $condition->build();
-
-            $sql = "{$sql} {$build->getSql()}";
-
-            $values = array_merge($values, $build->getValues());
+            $sql->merge($condition->build());
         }
 
-        return ValueSentence::create($sql, $values);
+        return $sql;
     }
 }

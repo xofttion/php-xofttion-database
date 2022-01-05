@@ -4,8 +4,8 @@ namespace Xofttion\Database\Sql\Clauses\Conditions;
 
 use Xofttion\Database\Contracts\IClauseCondition;
 use Xofttion\Database\Contracts\ICondition;
-use Xofttion\Database\Contracts\IValueSentence;
-use Xofttion\Database\Sql\ValueSentence;
+use Xofttion\Database\Contracts\IValueSql;
+use Xofttion\Database\Sql\ValueSql;
 
 class Condition implements IClauseCondition
 {
@@ -49,7 +49,7 @@ class Condition implements IClauseCondition
         return $this->condition->getColumn();
     }
 
-    public function build(): IValueSentence
+    public function build(): IValueSql
     {
         $sql = $this->condition->build();
 
@@ -57,7 +57,7 @@ class Condition implements IClauseCondition
             $sql = "{$this->union} {$sql}";
         }
 
-        $value = ValueSentence::create($sql, $this->values);
+        $value = ValueSql::create($sql, $this->values);
 
         return $value;
     }
