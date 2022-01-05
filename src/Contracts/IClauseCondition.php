@@ -8,5 +8,5 @@ interface IClauseCondition
 
     public function getColumn(): string;
 
-    public function build(): IValueSentence;
+    public function build(): IValueSql;
 }

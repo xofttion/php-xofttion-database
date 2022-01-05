@@ -6,7 +6,7 @@ final class Where extends Filter
 {
     // Constructor de la clase Where
 
-    private function __construct()
+    public function __construct()
     {
         parent::__construct('WHERE');
     }

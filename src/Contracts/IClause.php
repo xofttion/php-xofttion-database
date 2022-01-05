@@ -6,5 +6,5 @@ interface IClause
 {
     // Métodos de la interfaz IClause
 
-    public function build(): IValueSentence;
+    public function build(): IValueSql;
 }
