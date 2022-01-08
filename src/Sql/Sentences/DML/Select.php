@@ -4,13 +4,23 @@ namespace Xofttion\Database\Sql\Sentences\DML;
 
 use Xofttion\Database\Contracts\IValueSql;
 use Xofttion\Database\Sql\ValueSql;
-use Xofttion\Database\Sql\Clauses\Where;
+use Xofttion\Database\Sql\Sentences\Traits\GroupByTrait;
+use Xofttion\Database\Sql\Sentences\Traits\HavingTrait;
+use Xofttion\Database\Sql\Sentences\Traits\OrderByTrait;
+use Xofttion\Database\Sql\Sentences\Traits\WhereTrait;
 
 class Select extends Sentence
 {
-    private array $columns;
+    use GroupByTrait;
+    use HavingTrait;
+    use OrderByTrait;
+    use WhereTrait;
 
-    private ?Where $where = null;
+    // Atributos de la clase Select
+
+    private bool $distinct = false;
+
+    private array $columns;
 
     // Constructor de la clase Select
 
@@ -23,22 +33,9 @@ class Select extends Sentence
 
     // Métodos de la clase Select
 
-    public function where(): Where
+    public function enabledDistinct(): void
     {
-        if (is_null($this->where)) {
-            $this->where = Where::create();
-        }
-
-        return $this->where;
-    }
-
-    private function hasWhere(): bool
-    {
-        if (is_null($this->where)) {
-            return false;
-        }
-
-        return !$this->where->isEmpty();
+        $this->distinct = true;
     }
 
     // Métodos estáticos de la clase Select
@@ -52,14 +49,29 @@ class Select extends Sentence
 
     public function build(): IValueSql
     {
+        $distinct = !$this->distinct ? '' : 'DISTINCT ';
+
         $columns = implode(', ', $this->columns);
 
-        $command = "SELECT {$columns} FROM {$this->getTable()}";
+        $command = "SELECT {$distinct} {$columns}";
+        $command = "{$command} FROM {$this->getTable()}";
 
         $sql = ValueSql::create($command, []);
 
         if ($this->hasWhere()) {
             $sql->merge($this->where->build());
+        }
+
+        if ($this->hasGroupBy()) {
+            $sql->merge($this->groupBy->build());
+        }
+
+        if ($this->hasHaving()) {
+            $sql->merge($this->having->build());
+        }
+
+        if ($this->hasOrderBy()) {
+            $sql->merge($this->orderBy->build());
         }
 
         return $sql;
