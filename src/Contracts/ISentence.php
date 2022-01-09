@@ -7,4 +7,6 @@ interface ISentence
     // Métodos de la interfaz ISentence
 
     public function build(): IValueSql;
+
+    public function type(): int;
 }

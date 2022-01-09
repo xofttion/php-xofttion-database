@@ -3,8 +3,10 @@
 namespace Xofttion\Database\Sql;
 
 use PDO;
+use PDOStatement;
 use Xofttion\Database\Contracts\IConnection;
 use Xofttion\Database\Contracts\ISentence;
+use Xofttion\Database\Sql\Sentences\DML\Sentence;
 use Xofttion\Database\Sql\Utils\Result;
 
 class Connection implements IConnection
@@ -23,11 +25,11 @@ class Connection implements IConnection
 
     protected string $password;
 
-    private $connection;
+    private ?PDO $connection;
 
     // Constructor de la clase Connection
 
-    public function __construct(
+    protected function __construct(
         string $driver,
         string $host,
         ?string $port,
@@ -93,6 +95,32 @@ class Connection implements IConnection
         $statement = $this->connection->prepare($sql->getCommand());
         $statement->execute($sql->getValues());
 
+        $values = $this->resultSet($sentence, $statement);
+
+        $statement = null;
+
+        return $values;
+    }
+
+    private function resultSet(ISentence $sentence, PDOStatement $statement): array
+    {
+        switch ($sentence->type()) {
+            case (Sentence::SELECT):
+                return $this->fetchAll($statement);
+
+            case (Sentence::UPDATE):
+                return $this->rowsCount($statement);
+
+            case (Sentence::DELETE):
+                return $this->rowsCount($statement);
+
+            default:
+                return [];
+        }
+    }
+
+    private function fetchAll(PDOStatement $statement): array
+    {
         $results = $statement->fetchAll();
 
         $values = [];
@@ -101,9 +129,16 @@ class Connection implements IConnection
             $values[] = new Result($result);
         }
 
-        $statement = null;
-
         return $values;
+    }
+
+    private function rowsCount(PDOStatement $statement): array
+    {
+        $result = new Result([
+            'rows' => $statement->rowCount()
+        ]);
+
+        return [$result];
     }
 
     // Métodos de la clase Connection

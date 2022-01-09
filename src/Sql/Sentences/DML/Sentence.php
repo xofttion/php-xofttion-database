@@ -8,6 +8,16 @@ use Xofttion\Database\Sql\ValueSql;
 
 class Sentence implements ISentence
 {
+    // Constantes de la clase Sentence
+
+    public const SELECT = 1;
+
+    public const INSERT = 2;
+
+    public const UPDATE = 3;
+
+    public const DELETE = 4;
+
     // Atributos de la clase Sentence
 
     private string $table;
@@ -30,6 +40,11 @@ class Sentence implements ISentence
 
     public function build(): IValueSql
     {
-        return ValueSql::create('', []);
+        return ValueSql::create('');
+    }
+
+    public function type(): int
+    {
+        return self::SELECT;
     }
 }
