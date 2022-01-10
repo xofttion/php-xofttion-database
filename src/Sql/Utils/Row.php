@@ -4,9 +4,9 @@ namespace Xofttion\Database\Sql\Utils;
 
 use Xofttion\Kernel\Structs\Json;
 
-class Result extends Json
+class Row extends Json
 {
-    // Constructor de la clase Result
+    // Constructor de la clase Row
 
     public function __construct(?array $data = null)
     {

@@ -2,6 +2,8 @@
 
 namespace Xofttion\Database\Contracts;
 
+use Xofttion\Database\Sql\Utils\ResultSet;
+
 interface IConnection
 {
     // Métodos de la interfaz IConnection
@@ -16,5 +18,5 @@ interface IConnection
 
     public function rollback(): void;
 
-    public function execute(ISentence $sentence);
+    public function execute(ISentence $sentence): ResultSet;
 }

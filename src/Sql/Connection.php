@@ -7,7 +7,8 @@ use PDOStatement;
 use Xofttion\Database\Contracts\IConnection;
 use Xofttion\Database\Contracts\ISentence;
 use Xofttion\Database\Sql\Sentences\DML\Sentence;
-use Xofttion\Database\Sql\Utils\Result;
+use Xofttion\Database\Sql\Utils\ResultSet;
+use Xofttion\Database\Sql\Utils\Row;
 
 class Connection implements IConnection
 {
@@ -84,7 +85,7 @@ class Connection implements IConnection
         }
     }
 
-    public function execute(ISentence $sentence)
+    public function execute(ISentence $sentence): ResultSet
     {
         if (!$this->isConnect()) {
             return null;
@@ -95,14 +96,14 @@ class Connection implements IConnection
         $statement = $this->connection->prepare($sql->getCommand());
         $statement->execute($sql->getValues());
 
-        $values = $this->resultSet($sentence, $statement);
+        $resultSet = $this->resultSet($sentence, $statement);
 
         $statement = null;
 
-        return $values;
+        return $resultSet;
     }
 
-    private function resultSet(ISentence $sentence, PDOStatement $statement): array
+    private function resultSet(ISentence $sentence, PDOStatement $statement): ResultSet
     {
         switch ($sentence->type()) {
             case (Sentence::SELECT):
@@ -115,30 +116,26 @@ class Connection implements IConnection
                 return $this->rowsCount($statement);
 
             default:
-                return [];
+                return ResultSet::create(0);
         }
     }
 
-    private function fetchAll(PDOStatement $statement): array
+    private function fetchAll(PDOStatement $statement): ResultSet
     {
         $results = $statement->fetchAll();
 
-        $values = [];
+        $resultSet = ResultSet::create(0);
 
         foreach ($results as $result) {
-            $values[] = new Result($result);
+            $resultSet->add(new Row($result));
         }
 
-        return $values;
+        return $resultSet;
     }
 
-    private function rowsCount(PDOStatement $statement): array
+    private function rowsCount(PDOStatement $statement): ResultSet
     {
-        $result = new Result([
-            'rows' => $statement->rowCount()
-        ]);
-
-        return [$result];
+        return ResultSet::create($statement->rowCount());
     }
 
     // Métodos de la clase Connection
