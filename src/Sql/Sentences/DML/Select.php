@@ -6,6 +6,7 @@ use Xofttion\Database\Contracts\IValueSql;
 use Xofttion\Database\Sql\ValueSql;
 use Xofttion\Database\Sql\Sentences\Traits\GroupByTrait;
 use Xofttion\Database\Sql\Sentences\Traits\HavingTrait;
+use Xofttion\Database\Sql\Sentences\Traits\LimitTrait;
 use Xofttion\Database\Sql\Sentences\Traits\OrderByTrait;
 use Xofttion\Database\Sql\Sentences\Traits\WhereTrait;
 
@@ -13,6 +14,7 @@ class Select extends Sentence
 {
     use GroupByTrait;
     use HavingTrait;
+    use LimitTrait;
     use OrderByTrait;
     use WhereTrait;
 
@@ -72,6 +74,10 @@ class Select extends Sentence
 
         if ($this->hasOrderBy()) {
             $sql->merge($this->orderBy->build());
+        }
+
+        if ($this->hasLimit()) {
+            $sql->merge($this->limit->build());
         }
 
         return $sql;
