@@ -8,24 +8,16 @@ use Xofttion\Database\Sql\ValueSql;
 
 final class OrderBy implements IClause
 {
-    // Atributos de la clase OrderBy
-
     private array $columms;
-
-    // Constructor de la clase OrderBy
 
     private function __construct()
     {
     }
 
-    // Métodos estáticos de la clase OrderBy
-
     public static function create(): self
     {
         return new static();
     }
-
-    // Métodos de la clase OrderBy
 
     public function attach(string $column, bool $asc = true)
     {
@@ -38,8 +30,6 @@ final class OrderBy implements IClause
     {
         return count($this->columms) == 0;
     }
-
-    // Métodos sobrescritos de la interfaz IClause
 
     public function build(): IValueSql
     {

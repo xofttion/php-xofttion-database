@@ -6,15 +6,11 @@ use Xofttion\Database\Contracts\ICondition;
 
 class Condition implements ICondition
 {
-    // Atributos de la clase Condition
-
     protected string $column;
 
     protected string $operator;
 
     protected bool $not;
-
-    // Constructor de la clase Condition
 
     protected function __construct(
         string $column,
@@ -25,8 +21,6 @@ class Condition implements ICondition
         $this->operator = $operator;
         $this->not = $not;
     }
-
-    // Métodos de la clase Condition
 
     public function getOperator(): string
     {
@@ -42,8 +36,6 @@ class Condition implements ICondition
     {
         return '?';
     }
-
-    // Métodos sobrescritos de la interfaz ICondition
 
     public function getColumn(): string
     {

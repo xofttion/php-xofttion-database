@@ -9,23 +9,17 @@ use Xofttion\Database\Sql\ValueSql;
 
 class Condition implements IClauseCondition
 {
-    // Atributos de la clase Condition
-
     protected ICondition $condition;
 
     protected array $values;
 
     protected ?string $union;
 
-    // Constructor de la clase Condition
-
     protected function __construct(array $values, ?string $union = null)
     {
         $this->values = $values;
         $this->union = $union;
     }
-
-    // Métodos de la clase Condition
 
     public function getCondition(): ICondition
     {
@@ -41,8 +35,6 @@ class Condition implements IClauseCondition
     {
         return $this->union;
     }
-
-    // Métodos sobrescritos de la interfaz IClauseCondition
 
     public function getColumn(): string
     {

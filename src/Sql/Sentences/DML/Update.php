@@ -10,11 +10,7 @@ class Update extends Sentence
 {
     use WhereTrait;
 
-    // Atributos de la clase Update
-
     private array $values;
-
-    // Constructor de la clase Update
 
     private function __construct(string $table, array $values)
     {
@@ -23,14 +19,10 @@ class Update extends Sentence
         parent::__construct($table);
     }
 
-    // Métodos estáticos de la clase Update
-
     public static function create(string $table, array $values): self
     {
         return new static($table, $values);
     }
-
-    // Métodos sobrescritos de la interfaz ISentence
 
     public function build(): IValueSql
     {

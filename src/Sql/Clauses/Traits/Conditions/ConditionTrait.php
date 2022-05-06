@@ -12,8 +12,6 @@ use Xofttion\Database\Sql\Clauses\Conditions\Smaller;
 
 trait ConditionTrait
 {
-    // Métodos del trait ConditionTrait
-
     public function equal(string $column, string $value): void
     {
         $this->addEqual($column, $value, Union::AND);

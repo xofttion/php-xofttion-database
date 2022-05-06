@@ -6,11 +6,7 @@ use Xofttion\Database\Sql\Clauses\Limit;
 
 trait LimitTrait
 {
-    // Atributos del trait LimitTrait
-
     private ?Limit $limit = null;
-
-    // Métodos del trait LimitTrait
 
     public function limit(int $count, int $offset = 0): void
     {

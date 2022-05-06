@@ -7,8 +7,6 @@ use Xofttion\Database\Sql\Clauses\Conditions\Between;
 
 trait BetweenTrait
 {
-    // Métodos del trait BetweenTrait
-
     public function between(
         string $column,
         string $from,

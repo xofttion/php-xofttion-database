@@ -20,15 +20,11 @@ class Filter implements IFilter
     use LikeTrait;
     use NullTrait;
 
-    // Constructor de la clase Where
-
     protected function __construct(string $name)
     {
         $this->name = $name;
         $this->conditions = [];
     }
-
-    // Métodos de la clase Filter
 
     private function getUnion(string $value): ?string
     {
@@ -39,8 +35,6 @@ class Filter implements IFilter
     {
         return count($this->conditions) == 0;
     }
-
-    // Métodos sobrescritos de la interfaz IFilter
 
     public function build(): IValueSql
     {

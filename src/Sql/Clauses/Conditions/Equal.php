@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\Equal as EqualFilter;
 
 final class Equal extends Condition
 {
-    // Constructor de la clase Equal
-
     private function __construct(
         string $column,
         string $value,
@@ -17,8 +15,6 @@ final class Equal extends Condition
 
         parent::__construct([$value], $union);
     }
-
-    // Métodos estáticos de la clase Equal
 
     public static function create(
         string $column,

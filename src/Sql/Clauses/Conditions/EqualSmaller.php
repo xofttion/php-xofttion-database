@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\EqualSmaller as EqualSmallerFilter;
 
 final class EqualSmaller extends Condition
 {
-    // Constructor de la clase EqualSmaller
-
     private function __construct(
         string $column,
         string $value,
@@ -17,8 +15,6 @@ final class EqualSmaller extends Condition
 
         parent::__construct([$value], $union);
     }
-
-    // Métodos estáticos de la clase EqualSmaller
 
     public static function create(
         string $column,

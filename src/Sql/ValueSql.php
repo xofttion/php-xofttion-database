@@ -6,21 +6,15 @@ use Xofttion\Database\Contracts\IValueSql;
 
 class ValueSql implements IValueSql
 {
-    // Atributos de la clase ValueSql
-
     private string $command;
 
     private array $values;
-
-    // Constructor de la clase ValueSql
 
     private function __construct(string $command, array $values = [])
     {
         $this->setCommand($command);
         $this->setValues($values);
     }
-
-    // Métodos de la clase ValueSql
 
     private function setCommand(string $command): void
     {
@@ -32,14 +26,10 @@ class ValueSql implements IValueSql
         $this->values = $values;
     }
 
-    // Métodos estáticos de la clase ValueSql
-
     public static function create(string $command, array $values = []): self
     {
         return new static($command, $values);
     }
-
-    // Métodos de la interfaz IValueSql
 
     public function getCommand(): string
     {

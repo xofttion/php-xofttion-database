@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Connection;
 
 final class MySQL extends Connection
 {
-    // Constructor de la clase MySQL
-
     private function __construct(array $config)
     {
         $driver = 'mysql';
@@ -20,8 +18,6 @@ final class MySQL extends Connection
 
         parent::__construct($driver, $host, $port, $database, $user, $password);
     }
-
-    // Métodos estáticos de la clase MySQL
 
     public static function create(array $config): self
     {

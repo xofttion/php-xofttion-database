@@ -7,8 +7,6 @@ use Xofttion\Database\Sql\Clauses\Conditions\In;
 
 trait InTrait
 {
-    // Métodos del trait InTrait
-
     public function in(
         string $column,
         array $values,

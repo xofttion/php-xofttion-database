@@ -7,8 +7,6 @@ use Xofttion\Database\Sql\Clauses\Conditions\Like;
 
 trait LikeTrait
 {
-    // Métodos del trait LikeTrait
-
     public function like(
         string $column,
         string $value,

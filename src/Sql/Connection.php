@@ -12,8 +12,6 @@ use Xofttion\Database\Sql\Utils\Row;
 
 class Connection implements IConnection
 {
-    // Atributos de la clase Connection
-
     protected string $driver;
 
     protected string $host;
@@ -27,8 +25,6 @@ class Connection implements IConnection
     protected string $password;
 
     private ?PDO $connection;
-
-    // Constructor de la clase Connection
 
     protected function __construct(
         string $driver,
@@ -45,8 +41,6 @@ class Connection implements IConnection
         $this->user = $user;
         $this->password = $password;
     }
-
-    // Métodos sobrescritos de la interfaz IConnection
 
     public function open(): void
     {
@@ -137,8 +131,6 @@ class Connection implements IConnection
     {
         return ResultSet::create($statement->rowCount());
     }
-
-    // Métodos de la clase Connection
 
     protected function getUrl(): string
     {

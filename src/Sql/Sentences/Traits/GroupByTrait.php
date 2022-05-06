@@ -6,11 +6,7 @@ use Xofttion\Database\Sql\Clauses\GroupBy;
 
 trait GroupByTrait
 {
-    // Atributos del trait GroupByTrait
-
     private ?GroupBy $groupBy = null;
-
-    // Métodos del trait GroupByTrait
 
     public function groupBy(array $columns): void
     {

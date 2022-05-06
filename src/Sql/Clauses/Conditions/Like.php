@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\Like as LikeFilter;
 
 final class Like extends Condition
 {
-    // Constructor de la clase Like
-
     private function __construct(
         string $column,
         string $value,
@@ -18,8 +16,6 @@ final class Like extends Condition
 
         parent::__construct([$value], $union);
     }
-
-    // Métodos estáticos de la clase Like
 
     public static function create(
         string $column,
