@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Utils\ResultSet;
 
 interface IConnection
 {
-    // Métodos de la interfaz IConnection
-
     public function open(): void;
 
     public function close(): void;

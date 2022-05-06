@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\Greater as GreaterFilter;
 
 final class Greater extends Condition
 {
-    // Constructor de la clase Greater
-
     private function __construct(
         string $column,
         string $value,
@@ -17,8 +15,6 @@ final class Greater extends Condition
 
         parent::__construct([$value], $union);
     }
-
-    // Métodos estáticos de la clase Greater
 
     public static function create(
         string $column,

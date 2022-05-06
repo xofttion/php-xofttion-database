@@ -7,11 +7,7 @@ use Xofttion\Database\Sql\ValueSql;
 
 class Insert extends Sentence
 {
-    // Atributos de la clase Insert
-
     private array $values;
-
-    // Constructor de la clase Insert
 
     private function __construct(string $table, array $values)
     {
@@ -20,14 +16,10 @@ class Insert extends Sentence
         parent::__construct($table);
     }
 
-    // Métodos estáticos de la clase Insert
-
     public static function create(string $table, array $values): self
     {
         return new static($table, $values);
     }
-
-    // Métodos sobrescritos de la interfaz ISentence
 
     public function build(): IValueSql
     {

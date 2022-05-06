@@ -4,11 +4,7 @@ namespace Xofttion\Database\Sql\Conditions;
 
 final class In extends Condition
 {
-    // Atributos de la clase In
-
     private int $count;
-
-    // Constructor de la clase In
 
     private function __construct(
         string $column,
@@ -20,8 +16,6 @@ final class In extends Condition
         parent::__construct($column, 'IN', $not);
     }
 
-    // Métodos estáticos de la clase In
-
     public static function create(
         string $column,
         int $count,
@@ -29,8 +23,6 @@ final class In extends Condition
     ): self {
         return new static($column, $count, $not);
     }
-
-    // Métodos sobrescritos de la clase Filter
 
     public function getValue(): string
     {

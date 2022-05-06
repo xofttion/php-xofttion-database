@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\In as InFilter;
 
 final class In extends Condition
 {
-    // Constructor de la clase In
-
     private function __construct(
         string $column,
         array $values,
@@ -20,8 +18,6 @@ final class In extends Condition
 
         parent::__construct($values, $union);
     }
-
-    // Métodos estáticos de la clase In
 
     public static function create(
         string $column,

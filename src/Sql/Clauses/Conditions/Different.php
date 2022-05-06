@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\Different as DifferentFilter;
 
 final class Different extends Condition
 {
-    // Constructor de la clase Different
-
     private function __construct(
         string $column,
         string $value,
@@ -17,8 +15,6 @@ final class Different extends Condition
 
         parent::__construct([$value], $union);
     }
-
-    // Métodos estáticos de la clase Different
 
     public static function create(
         string $column,

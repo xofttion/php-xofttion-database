@@ -8,8 +8,6 @@ use Xofttion\Database\Sql\ValueSql;
 
 class Sentence implements ISentence
 {
-    // Constantes de la clase Sentence
-
     public const SELECT = 1;
 
     public const INSERT = 2;
@@ -18,25 +16,17 @@ class Sentence implements ISentence
 
     public const DELETE = 4;
 
-    // Atributos de la clase Sentence
-
     private string $table;
-
-    // Constructor de la clase Sentence
 
     protected function __construct(string $table)
     {
         $this->table = $table;
     }
 
-    // Métodos de la clase Sentence
-
     protected function getTable(): string
     {
         return $this->table;
     }
-
-    // Métodos sobrescritos de la interfaz ISentence
 
     public function build(): IValueSql
     {

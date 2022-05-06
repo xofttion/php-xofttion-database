@@ -6,11 +6,7 @@ use Xofttion\Database\Sql\Clauses\Where;
 
 trait WhereTrait
 {
-    // Atributos del trait WhereTrait
-
     private ?Where $where = null;
-
-    // Métodos del trait WhereTrait
 
     public function where(): Where
     {

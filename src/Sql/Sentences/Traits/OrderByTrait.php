@@ -6,11 +6,7 @@ use Xofttion\Database\Sql\Clauses\OrderBy;
 
 trait OrderByTrait
 {
-    // Atributos del trait OrderByTrait
-
     private ?OrderBy $orderBy = null;
-
-    // Métodos del trait OrderByTrait
 
     public function orderBy(string $column, bool $asc = true): void
     {

@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\EqualGreater as EqualGreaterFilter;
 
 final class EqualGreater extends Condition
 {
-    // Constructor de la clase EqualGreater
-
     private function __construct(
         string $column,
         string $value,
@@ -17,8 +15,6 @@ final class EqualGreater extends Condition
 
         parent::__construct([$value], $union);
     }
-
-    // Métodos estáticos de la clase EqualGreater
 
     public static function create(
         string $column,

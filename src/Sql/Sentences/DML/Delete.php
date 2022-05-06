@@ -10,21 +10,15 @@ class Delete extends Sentence
 {
     use WhereTrait;
 
-    // Constructor de la clase Delete
-
     private function __construct(string $table)
     {
         parent::__construct($table);
     }
 
-    // Métodos estáticos de la clase Delete
-
     public static function create(string $table): self
     {
         return new static($table);
     }
-
-    // Métodos sobrescritos de la interfaz ISentence
 
     public function build(): IValueSql
     {

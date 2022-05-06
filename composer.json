@@ -2,25 +2,26 @@
   "name": "xofttion/database",
   "type": "library",
   "license": "MIT",
-  "description": "Librería de Xofttion con funcionalidades para gestionar Base de Datos",
+  "description": "Librería de Xofttion que proporciona funcionalidades para gestionar conexiones y consultas en base de datos",
   "keywords": [
-      "xofttion",
-      "database"
+    "xofttion",
+    "database"
   ],
   "authors": [
-      {
-          "name": "Daniel Andres Castillo Pedroza",
-          "email": "ing.dacastillop@gmail.com",
-          "role": "owner"
-      }
+    {
+      "name": "Daniel Andres Castillo Pedroza",
+      "email": "ing.dacastillop@gmail.com",
+      "role": "owner"
+    }
   ],
   "minimum-stability": "dev",
   "require": {
-      "xofttion/kernel" : "7.1.x-dev"
+    "php": "^7.4.0",
+    "xofttion/kernel": "^7.4.1"
   },
   "autoload": {
-      "psr-4": {
-          "Xofttion\\Database\\": "src/"
-      }
+    "psr-4": {
+      "Xofttion\\Database\\": "src/"
+    }
   }
 }

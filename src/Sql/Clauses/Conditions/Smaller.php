@@ -6,8 +6,6 @@ use Xofttion\Database\Sql\Conditions\Smaller as SmallerFilter;
 
 final class Smaller extends Condition
 {
-    // Constructor de la clase Smaller
-
     private function __construct(
         string $column,
         string $value,
@@ -17,8 +15,6 @@ final class Smaller extends Condition
 
         parent::__construct([$value], $union);
     }
-
-    // Métodos estáticos de la clase Smaller
 
     public static function create(
         string $column,

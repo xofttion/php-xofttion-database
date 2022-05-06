@@ -6,11 +6,7 @@ use Xofttion\Database\Sql\Clauses\Having;
 
 trait HavingTrait
 {
-    // Atributos del trait HavingTrait
-
     private ?Having $having = null;
-
-    // Métodos del trait HavingTrait
 
     public function having(): Having
     {

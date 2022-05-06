@@ -8,8 +8,6 @@ use Xofttion\Database\Sql\Clauses\Conditions\IsNull;
 
 trait NullTrait
 {
-    // Métodos del trait NullTrait
-
     public function isNull(string $column, bool $not = false): void
     {
         $this->addIsNull($column, Union::AND, $not);

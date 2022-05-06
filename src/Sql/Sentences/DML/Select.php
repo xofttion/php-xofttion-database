@@ -18,13 +18,9 @@ class Select extends Sentence
     use OrderByTrait;
     use WhereTrait;
 
-    // Atributos de la clase Select
-
     private bool $distinct = false;
 
     private array $columns;
-
-    // Constructor de la clase Select
 
     private function __construct(string $table, array $columns = ['*'])
     {
@@ -33,21 +29,15 @@ class Select extends Sentence
         parent::__construct($table);
     }
 
-    // Métodos de la clase Select
-
     public function enabledDistinct(): void
     {
         $this->distinct = true;
     }
 
-    // Métodos estáticos de la clase Select
-
     public static function create(string $table, array $columns = ['*']): self
     {
         return new static($table, $columns);
     }
-
-    // Métodos sobrescritos de la interfaz ISentence
 
     public function build(): IValueSql
     {

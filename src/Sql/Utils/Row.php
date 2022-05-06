@@ -6,14 +6,10 @@ use Xofttion\Kernel\Structs\Json;
 
 class Row extends Json
 {
-    // Constructor de la clase Row
-
     public function __construct(?array $data = null)
     {
         parent::__construct($data, true);
     }
-
-    // Métodos sobrescritos de la clase Json
 
     protected function map(array $data): bool
     {

@@ -8,13 +8,9 @@ use Xofttion\Database\Sql\ValueSql;
 
 class Limit implements IClause
 {
-    // Atributos de la clase Limit
-
     private int $count;
 
     private int $offset;
-
-    // Constructor de la clase Limit
 
     private function __construct(int $count, int $offset = 0)
     {
@@ -22,14 +18,10 @@ class Limit implements IClause
         $this->offset = $offset;
     }
 
-    // Métodos estáticos de la clase Limit
-
     public static function create(int $count, int $offset = 0): self
     {
         return new static($count, $offset);
     }
-
-    // Métodos sobrescritos de la interfaz IClause
 
     public function build(): IValueSql
     {
