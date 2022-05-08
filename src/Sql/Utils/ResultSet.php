@@ -8,15 +8,15 @@ class ResultSet
 
     private int $affected;
 
-    private function __construct(int $affected)
+    private function __construct(int $affected, array $rows = [])
     {
         $this->affected = $affected;
-        $this->rows = [];
+        $this->rows = $rows;
     }
 
-    public static function create(int $affected): self
+    public static function create(int $affected, array $rows = []): self
     {
-        return new static($affected);
+        return new static($affected, $rows);
     }
 
     public function affected(): int
@@ -27,10 +27,5 @@ class ResultSet
     public function rows(): array
     {
         return $this->rows;
-    }
-
-    public function add(Row $row): void
-    {
-        $this->rows[] = $row;
     }
 }
