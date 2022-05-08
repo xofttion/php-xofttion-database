@@ -118,13 +118,13 @@ class Connection implements IConnection
     {
         $results = $statement->fetchAll();
 
-        $resultSet = ResultSet::create(0);
+        $rows = [];
 
         foreach ($results as $result) {
-            $resultSet->add(new Row($result));
+            $rows[] = new Row($result);
         }
 
-        return $resultSet;
+        return ResultSet::create(0, $rows);
     }
 
     private function rowsCount(PDOStatement $statement): ResultSet
